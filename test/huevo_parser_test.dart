@@ -1,4 +1,4 @@
-import 'package:huevo_parser/huevo_parser.dart';
+import 'package:huevo/huevo.dart';
 import 'package:test/test.dart';
 import 'package:tuple/tuple.dart';
 
@@ -125,9 +125,14 @@ void main() {
       var keywordParser = StringParser('Parser');
       var keywordCombinator = StringParser('Combinator');
 
-      var sentanceParser = Parser.join(
-          [keywordThis, keywordis, keywordA, keywordParser, keywordCombinator],
-          whiteSpace).end();
+      var sentanceParser = Parser.join([
+        keywordThis,
+        keywordis,
+        keywordA,
+        keywordParser,
+        keywordCombinator
+      ], whiteSpace)
+          .end();
       var result = sentanceParser.parse(inputSource);
       expect(result != null, true);
       print(result);
