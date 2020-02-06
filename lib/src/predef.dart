@@ -17,15 +17,18 @@ abstract class SemiGroup<R> {
   R concate(R arg1, R arg2);
   R unit();
 }
+
 class StringSemiGroup extends SemiGroup<String> {
   @override
   String concate(String arg1, String arg2) {
     return arg1 + arg2;
   }
+
   @override
   String unit() {
     return '';
   }
+
   @override
   bool equals(String arg1, String arg2) {
     return arg1 == arg2;

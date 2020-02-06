@@ -1,8 +1,9 @@
-import 'package:huevo_parser/huevo_parser.dart';
+import 'package:huevo/huevo.dart';
 import 'package:tuple/tuple.dart';
 import 'predef.dart';
 import 'input_source.dart';
 import 'combinators.dart';
+
 abstract class Parser<E, R> {
   Parser();
 
@@ -42,7 +43,8 @@ abstract class Parser<E, R> {
     return OrCombinator(this, another);
   }
 
-  Parser<E, R> sequence<R2 extends R>(Parser<E, R2> another, SemiGroup<R> algorithm) {
+  Parser<E, R> sequence<R2 extends R>(
+      Parser<E, R2> another, SemiGroup<R> algorithm) {
     return AndCombinator(this, another).map((result) {
       return result.toList().fold(algorithm.unit(), (arg1, arg2) {
         return algorithm.concate(arg1, arg2);
@@ -117,5 +119,5 @@ class SemiGroupParser<R> extends Parser<R, R> {
 }
 
 class StringParser extends SemiGroupParser<String> {
-  StringParser(String target): super(target, StringSemiGroup());
+  StringParser(String target) : super(target, StringSemiGroup());
 }

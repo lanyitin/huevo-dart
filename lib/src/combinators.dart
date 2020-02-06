@@ -20,6 +20,7 @@ class SingleElementParser<E> extends Parser<E, E> {
     }
   }
 }
+
 class OrCombinator<E, R1, R2> extends Parser<E, Either<R1, R2>> {
   final Parser<E, R1> _parser1;
   final Parser<E, R2> _parser2;
@@ -116,8 +117,7 @@ class RepeatCombinator<E, R> extends Parser<E, List<R>> {
   }
 }
 
-
-class EOIParser<E> extends Parser<E, bool>{
+class EOIParser<E> extends Parser<E, bool> {
   @override
   bool doParse(InputSource<E> inputSource) {
     return !inputSource.hasNext();
