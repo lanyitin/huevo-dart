@@ -1,7 +1,7 @@
 name: huevo_parser
 description: A basic compiler infrastructure for Learning how to create a compile without any compiler's compiler
 version: 1.0.0
-author: Lan, Yi-Tin <lanyitin@gmail.com>
+homepage: https://github.com/lanyitin/huevo-dart
 
 environment:
   sdk: '>=2.6.0 <3.0.0'
