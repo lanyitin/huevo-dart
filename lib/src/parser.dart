@@ -29,7 +29,7 @@ abstract class Parser<E, R> {
     return BindCombinator(this, transformer);
   }
 
-  Parser<E, R> or<R2 extends R>(Parser<E, R2> another) {
+  Parser<E, R> or(Parser<E, R> another) {
     return OrCombinator(this, another).map((result) {
       if (result.isLeft) {
         return result.left;
