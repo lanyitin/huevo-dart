@@ -1,4 +1,6 @@
 ## 1.0.0-DEV
 
 - Initial version
-- Provide StringParser, and RegexParser
+
+## 1.0.1-DEV
+- Add RegexParser
