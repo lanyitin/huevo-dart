@@ -1,6 +1,6 @@
 name: huevo
 description: A basic compiler infrastructure for Learning how to create a compile without any compiler's compiler
-version: 1.0.2-DEV
+version: 1.0.3-7-DEV
 homepage: https://github.com/lanyitin/huevo-dart
 
 environment:

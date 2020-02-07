@@ -2,7 +2,7 @@ import 'dart:collection';
 
 class InputSource<E> {
   UnmodifiableListView<E> _view;
-  num _count;
+  int _count;
 
   InputSource(Iterable<E> source) {
     _view = UnmodifiableListView(source);
@@ -26,14 +26,14 @@ class InputSource<E> {
   /// move iterator back to previous `cnt` items.
   /// if `cnt` is greater then current position
   /// then move iterator to 0
-  void backward(num cnt) {
+  void backward(int cnt) {
     _count -= cnt;
     if (_count < -1) {
       _count = -1;
     }
   }
 
-  void forward(num cnt) {
+  void forward(int cnt) {
     _count += cnt;
   }
 
@@ -41,7 +41,7 @@ class InputSource<E> {
     return InputSource(_view.skip(getConsumed()));
   }
 
-  num getConsumed() {
+  int getConsumed() {
     return _count + 1;
   }
 }

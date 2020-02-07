@@ -28,7 +28,7 @@ void main() {
       expect(combinator.parse(InputSource(['b'])), null);
       var inputSource = InputSource('ab'.split(''));
       var parseResult = combinator.parse(inputSource);
-      expect(parseResult, Tuple2.fromList(['a', 'b']));
+      expect(parseResult, Tuple2('a', 'b'));
       expect(inputSource.getConsumed(), 2);
     });
 
@@ -58,7 +58,7 @@ void main() {
     test('any', () {
       var parser = Parser.fromElement('a').any();
       // var inputSource = InputSource('bb'.split(''));
-      expect(parser.parse(InputSource('bb'.split(''))), []);
+      expect(parser.parse(InputSource('bb'.split(''))), <String>[]);
       expect(parser.parse(InputSource('ab'.split(''))), ['a']);
       expect(parser.parse(InputSource('aa'.split(''))), ['a', 'a']);
     });
@@ -72,7 +72,7 @@ void main() {
 
     test('optional', () {
       var parser = Parser.fromElement('a').optional();
-      expect(parser.parse(InputSource('bb'.split(''))), []);
+      expect(parser.parse(InputSource('bb'.split(''))), <String>[]);
       expect(parser.parse(InputSource('ab'.split(''))), ['a']);
       expect(parser.parse(InputSource('aa'.split(''))), ['a']);
     });
@@ -81,7 +81,7 @@ void main() {
   group('InputSource', () {
     test('return value of hasNext should be false when no elements in source',
         () {
-      var source = InputSource([]);
+      var source = InputSource(<String>[]);
       expect(source.hasNext(), false);
     });
 

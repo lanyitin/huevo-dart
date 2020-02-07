@@ -7,3 +7,6 @@
 
 ## 1.0.2-DEV
 - Bugfix in Parser::or
+
+## 1.0.3-DEV
+- introduce concept of lazy evaluation
