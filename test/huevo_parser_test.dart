@@ -138,4 +138,24 @@ void main() {
       print(result);
     });
   });
+
+  group('RegexParser Test', () {
+    test('numeric: number only', () {
+      var parser = RegexParser(RegExp('-?[1-9][0-9]*')).end();
+      expect(parser.parse(InputSource('abcd'.split(''))), null);
+      expect(parser.parse(InputSource('-'.split(''))), null);
+      expect(parser.parse(InputSource('-1'.split(''))), '-1');
+      var inputSource = InputSource('-1a'.split(''));
+      expect(parser.parse(inputSource), null);
+    });
+    test('numeric', () {
+      var parser = RegexParser(RegExp('-?[1-9][0-9]*'));
+      expect(parser.parse(InputSource('abcd'.split(''))), null);
+      expect(parser.parse(InputSource('-'.split(''))), null);
+      expect(parser.parse(InputSource('-1'.split(''))), '-1');
+      var inputSource = InputSource('-1a'.split(''));
+      expect(parser.parse(inputSource), '-1');
+      expect(inputSource.nextItem(), 'a');
+    });
+  });
 }

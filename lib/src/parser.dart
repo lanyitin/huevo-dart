@@ -121,3 +121,23 @@ class SemiGroupParser<R> extends Parser<R, R> {
 class StringParser extends SemiGroupParser<String> {
   StringParser(String target) : super(target, StringSemiGroup());
 }
+
+class RegexParser extends Parser<String, String> {
+  final RegExp _regexp;
+  RegexParser(this._regexp);
+  @override
+  String doParse(InputSource<String> inputSource) {
+    var buffer = StringBuffer();
+    var clonedInputSource = inputSource.rest();
+    while (clonedInputSource.hasNext()) {
+      buffer.write(clonedInputSource.nextItem());
+    }
+    var rest = buffer.toString();
+    var matcher = _regexp.firstMatch(rest);
+    if (matcher == null || matcher.start != 0) {
+      return null;
+    }
+    inputSource.forward(matcher.end - matcher.start);
+    return rest.substring(matcher.start, matcher.end);
+  }
+}
